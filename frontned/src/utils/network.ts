@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { QueryClient } from '@tanstack/react-query';
+import { STALE_TIME_MIN } from '../contants/constants';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -8,7 +9,7 @@ const queryClient = new QueryClient({
       refetchOnMount: false,
       refetchOnReconnect: false,
       retry: false,
-      staleTime: 5 * 60 * 1000,
+      staleTime: STALE_TIME_MIN,
     },
   },
 });
