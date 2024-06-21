@@ -1,14 +1,7 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import HomePage from './pages/HomePage/HomePage';
+import { RouterProvider } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material';
-import theme from './styles';
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <HomePage />,
-  },
-]);
+import theme from './providers/theme';
+import router from './providers/routes';
 
 function App() {
   return (
