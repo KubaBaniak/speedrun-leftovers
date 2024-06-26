@@ -24,7 +24,7 @@ const StyledMenu = styled((props: MenuProps) => (
   '& .MuiPaper-root': {
     padding: '0',
     boxShadow:
-      'rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px',
+      '0 3px 14px 2px #0000001F, 0 8px 10px 1px #00000024, 0 5px 5px -3px #00000033',
     '& .MuiMenu-list': {
       '& .MuiDivider-root': {
         margin: '0 0',

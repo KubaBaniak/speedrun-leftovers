@@ -11,6 +11,9 @@ const theme = createTheme({
       disabled: '#00000061;',
     },
   },
+  typography: {
+    fontFamily: ['Poppins', 'Open-sans'].join(','),
+  },
 });
 
 export default theme;
