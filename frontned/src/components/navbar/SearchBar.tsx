@@ -1,13 +1,38 @@
-import styled from 'styled-components';
+import { Input, InputAdornment } from '@mui/material';
+import { SearchOutlined } from '@mui/icons-material';
+import { styled } from '@mui/material/styles';
 
-const SearchInput = styled.input`
-  margin-right: auto;
-  width: 30%;
-  width-max: 400px;
-  height: 40px;
-  border-radius: 5px;
-`;
+const SearchBarInput = styled(Input)(({ theme }) => ({
+  height: '40px',
+  width: '50%',
+  maxWidth: '570px',
+  marginRight: 'auto',
+  borderRadius: '4px',
+  outline: 'none',
+  border: 'solid 1px',
+  borderColor: '#0000003B',
+  padding: '8px',
+
+  '&::before': {
+    borderBottom: 'none',
+  },
+
+  input: {
+    '&::placeholder': {
+      fontSize: '14px',
+    },
+  },
+}));
 
 export default function SearchBar() {
-  return <SearchInput></SearchInput>;
+  return (
+    <SearchBarInput
+      placeholder="Search"
+      endAdornment={
+        <InputAdornment position="end">
+          <SearchOutlined />
+        </InputAdornment>
+      }
+    />
+  );
 }

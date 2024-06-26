@@ -7,7 +7,8 @@ const NavbarContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 16px;
-  height: 40px;
+  height: 36px;
+  padding: 0px 40px;
 `;
 
 export default function Navbar() {

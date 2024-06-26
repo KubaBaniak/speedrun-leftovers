@@ -1,34 +1,43 @@
-import styled from 'styled-components';
+import { Button, Stack } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import DropdownMenu from './DropdownMenu';
 
-const NavList = styled.ul`
+const NavStack = styled(Stack)`
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 16px;
+  width: 35%;
+  max-width: 273px;
+  height: 40px;
+  box-sizing: content-box;
   height: 32px;
-  gap: 2px;
-  list-style: none;
+  font-size: 14px;
 `;
-const NavListItem = styled.li`
-  padding: 6px 8px;
-`;
-const NavText = styled.p<{ $color }>``;
-const Button = styled.button`
-  border: none;
-  background: none;
-`;
+
+const LogInButton = styled(Button)(({ theme }) => ({
+  color: theme.palette.primary.main,
+  textTransform: 'none',
+  padding: '6px 8px',
+}));
+
+const SignInButton = styled(Button)(({ theme }) => ({
+  backgroundColor: theme.palette.primary.main,
+  color: theme.palette.primary.contrastText,
+  textTransform: 'none',
+  padding: '6px 16px',
+  ':hover': {
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.primary.contrastText,
+  },
+}));
 
 export default function Navigation() {
   return (
-    <NavList>
-      <NavListItem>
-        <Button>Recipes</Button>
-      </NavListItem>
-      <NavListItem>
-        <Button>Log in</Button>
-      </NavListItem>
-      <NavListItem>
-        <Button>Sign Up</Button>
-      </NavListItem>
-    </NavList>
+    <NavStack>
+      <DropdownMenu />
+      <LogInButton>Log in</LogInButton>
+      <SignInButton>Sign up</SignInButton>
+    </NavStack>
   );
 }
