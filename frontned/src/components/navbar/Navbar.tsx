@@ -8,7 +8,7 @@ const NavbarContainer = styled.div`
   align-items: center;
   gap: 16px;
   height: 36px;
-  padding: 0px 40px;
+  padding: 12px 36px;
 `;
 
 export default function Navbar() {

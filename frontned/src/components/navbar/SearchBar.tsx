@@ -4,7 +4,7 @@ import { styled } from '@mui/material/styles';
 
 const SearchBarInput = styled(Input)(({ theme }) => ({
   height: '40px',
-  width: '50%',
+  width: '40%',
   maxWidth: '570px',
   marginRight: 'auto',
   borderRadius: '4px',
@@ -13,11 +13,12 @@ const SearchBarInput = styled(Input)(({ theme }) => ({
   borderColor: '#0000003B',
   padding: '8px',
 
-  '&::before': {
+  '&:hover:not(.Mui-disabled, .Mui-error):before': {
     borderBottom: 'none',
   },
 
   input: {
+    color: theme.palette.text.secondary,
     '&::placeholder': {
       fontSize: '14px',
     },

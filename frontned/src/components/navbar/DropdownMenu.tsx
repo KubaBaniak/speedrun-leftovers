@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import Menu, { MenuProps } from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { Divider } from '@mui/material';
 
 const StyledMenu = styled((props: MenuProps) => (
   <Menu
@@ -21,18 +22,18 @@ const StyledMenu = styled((props: MenuProps) => (
   />
 ))(({ theme }) => ({
   '& .MuiPaper-root': {
-    borderRadius: 6,
-    marginTop: theme.spacing(1),
-    minWidth: 180,
-    backgroundColor: theme.palette.primary.contrastText,
-    color:
-      theme.palette.mode === 'light'
-        ? theme.palette.text.secondary
-        : theme.palette.grey[300],
+    padding: '0',
     boxShadow:
       'rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px',
     '& .MuiMenu-list': {
-      padding: '4px 0',
+      '& .MuiDivider-root': {
+        margin: '0 0',
+      },
+      '& .MuiMenuItem-root': {
+        color: theme.palette.text.primary,
+        width: '220px',
+        padding: '6px 16px',
+      },
     },
   },
 }));
@@ -42,6 +43,10 @@ const DropdownButton = styled(Button)(({ theme }) => ({
   color: theme.palette.text.secondary,
   textTransform: 'none',
   padding: '6px 8px',
+  '&:hover': {
+    borderRadius: '4px',
+    backgroundColor: '#0000000A',
+  },
 }));
 
 export default function DropdownMenu() {
@@ -76,10 +81,39 @@ export default function DropdownMenu() {
         onClose={handleClose}
       >
         <MenuItem onClick={handleClose} disableRipple>
-          Edit
+          🍽️ All Recipes
         </MenuItem>
+        <Divider sx={{ m: 0 }} />
         <MenuItem onClick={handleClose} disableRipple>
-          Duplicate
+          🥪 Breakfasts
+        </MenuItem>
+        <Divider sx={{ m: 0 }} />
+        <MenuItem onClick={handleClose} disableRipple>
+          🍲 Soups
+        </MenuItem>
+        <Divider sx={{ m: 0 }} />
+        <MenuItem onClick={handleClose} disableRipple>
+          🍔 Lunch
+        </MenuItem>
+        <Divider sx={{ m: 0 }} />
+        <MenuItem onClick={handleClose} disableRipple>
+          🥐 Baking
+        </MenuItem>
+        <Divider sx={{ m: 0 }} />
+        <MenuItem onClick={handleClose} disableRipple>
+          🧁 Desserts
+        </MenuItem>
+        <Divider sx={{ m: 0 }} />
+        <MenuItem onClick={handleClose} disableRipple>
+          🍹 Drinks
+        </MenuItem>
+        <Divider sx={{ m: 0 }} />
+        <MenuItem onClick={handleClose} disableRipple>
+          🍿 Snacks
+        </MenuItem>
+        <Divider sx={{ mt: 0, mb: 0 }} />
+        <MenuItem onClick={handleClose} disableRipple>
+          🥗 Salads
         </MenuItem>
       </StyledMenu>
     </>

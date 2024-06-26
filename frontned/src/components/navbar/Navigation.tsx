@@ -6,11 +6,11 @@ const NavStack = styled(Stack)`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 16px;
-  width: 35%;
+  gap: 2px;
+  width: 40%;
   max-width: 273px;
   height: 40px;
-  box-sizing: content-box;
+  box-sizing: border-box;
   height: 32px;
   font-size: 14px;
 `;
@@ -26,6 +26,8 @@ const SignInButton = styled(Button)(({ theme }) => ({
   color: theme.palette.primary.contrastText,
   textTransform: 'none',
   padding: '6px 16px',
+  boxShadow:
+    '0px 1px 5px 0px #0000001F, 0px 2px 2px 0px #00000024, 0px 3px 1px -2px #00000033',
   ':hover': {
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.primary.contrastText,
