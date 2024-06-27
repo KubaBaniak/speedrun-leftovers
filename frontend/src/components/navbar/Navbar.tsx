@@ -1,15 +1,7 @@
 import Logo from './Logo';
 import Navigation from './Navigation';
 import SearchBar from './SearchBar';
-import styled from 'styled-components';
-
-const NavbarContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  height: 36px;
-  padding: 12px 36px;
-`;
+import { Container, styled } from '@mui/material';
 
 export default function Navbar() {
   return (
@@ -20,3 +12,11 @@ export default function Navbar() {
     </NavbarContainer>
   );
 }
+
+const NavbarContainer = styled(Container)({
+  display: 'flex',
+  alignItems: 'center',
+  gap: '16px',
+  padding: '12px 36px',
+  backgroundColor: '#FEFEFE',
+});

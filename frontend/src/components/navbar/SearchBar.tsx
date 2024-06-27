@@ -2,6 +2,19 @@ import { Input, InputAdornment } from '@mui/material';
 import { SearchOutlined } from '@mui/icons-material';
 import { styled } from '@mui/material/styles';
 
+export default function SearchBar() {
+  return (
+    <SearchBarInput
+      placeholder="Search"
+      endAdornment={
+        <InputAdornment position="end">
+          <SearchOutlined />
+        </InputAdornment>
+      }
+    />
+  );
+}
+
 const SearchBarInput = styled(Input)(({ theme }) => ({
   height: '40px',
   width: '40%',
@@ -24,16 +37,3 @@ const SearchBarInput = styled(Input)(({ theme }) => ({
     },
   },
 }));
-
-export default function SearchBar() {
-  return (
-    <SearchBarInput
-      placeholder="Search"
-      endAdornment={
-        <InputAdornment position="end">
-          <SearchOutlined />
-        </InputAdornment>
-      }
-    />
-  );
-}
