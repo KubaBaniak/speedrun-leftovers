@@ -2,6 +2,16 @@ import { Button, Stack } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import DropdownMenu from './DropdownMenu';
 
+export default function Navigation() {
+  return (
+    <NavStack>
+      <DropdownMenu />
+      <LogInButton>Log in</LogInButton>
+      <SignInButton>Sign up</SignInButton>
+    </NavStack>
+  );
+}
+
 const NavStack = styled(Stack)`
   display: flex;
   flex-direction: row;
@@ -10,7 +20,6 @@ const NavStack = styled(Stack)`
   width: 40%;
   max-width: 273px;
   height: 40px;
-  box-sizing: border-box;
   height: 32px;
   font-size: 14px;
 `;
@@ -33,13 +42,3 @@ const SignInButton = styled(Button)(({ theme }) => ({
     color: theme.palette.primary.contrastText,
   },
 }));
-
-export default function Navigation() {
-  return (
-    <NavStack>
-      <DropdownMenu />
-      <LogInButton>Log in</LogInButton>
-      <SignInButton>Sign up</SignInButton>
-    </NavStack>
-  );
-}
