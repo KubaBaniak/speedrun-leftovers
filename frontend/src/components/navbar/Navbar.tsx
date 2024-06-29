@@ -1,7 +1,7 @@
 import Logo from './Logo';
 import Navigation from './Navigation';
 import SearchBar from './SearchBar';
-import { Container, styled } from '@mui/material';
+import { Box, styled } from '@mui/material';
 
 export default function Navbar() {
   return (
@@ -13,7 +13,7 @@ export default function Navbar() {
   );
 }
 
-const NavbarContainer = styled(Container)({
+const NavbarContainer = styled(Box)({
   display: 'flex',
   alignItems: 'center',
   gap: '16px',
