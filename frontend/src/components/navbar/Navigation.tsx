@@ -1,13 +1,32 @@
-import { Button, Stack } from '@mui/material';
+import { Stack } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import DropdownMenu from './DropdownMenu';
+import LogInButton from '../buttons/LogIn';
+import SignInButton from '../buttons/SignIn';
+import AddRecipeButton from '../buttons/AddRecipe';
+import AllRecipesMenu from './AllRecipesMenu';
+import UserAccountMenu from './UserAccountMenu';
+
+//temp solution
+const isLoggedIn = true;
 
 export default function Navigation() {
   return (
+
     <NavStack>
-      <DropdownMenu />
-      <LogInButton>Log in</LogInButton>
-      <SignInButton>Sign up</SignInButton>
+      {
+        isLoggedIn ?
+          <>
+            <AddRecipeButton />
+            <AllRecipesMenu />
+            <UserAccountMenu />
+          </>
+          :
+          <>
+            <AllRecipesMenu />
+            <LogInButton />
+            <SignInButton />
+          </>
+      }
     </NavStack>
   );
 }
@@ -15,30 +34,9 @@ export default function Navigation() {
 const NavStack = styled(Stack)`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  gap: 2px;
-  width: 40%;
-  max-width: 273px;
+  justify-content: flex-end;
+  gap: 16px;
   height: 40px;
   height: 32px;
   font-size: 14px;
 `;
-
-const LogInButton = styled(Button)(({ theme }) => ({
-  color: theme.palette.primary.main,
-  textTransform: 'none',
-  padding: '6px 8px',
-}));
-
-const SignInButton = styled(Button)(({ theme }) => ({
-  backgroundColor: theme.palette.primary.main,
-  color: theme.palette.primary.contrastText,
-  textTransform: 'none',
-  padding: '6px 16px',
-  boxShadow:
-    '0px 1px 5px 0px #0000001F, 0px 2px 2px 0px #00000024, 0px 3px 1px -2px #00000033',
-  ':hover': {
-    backgroundColor: theme.palette.primary.main,
-    color: theme.palette.primary.contrastText,
-  },
-}));
