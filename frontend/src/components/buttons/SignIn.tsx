@@ -1,7 +1,16 @@
+import { useState } from 'react';
 import { Button, styled } from "@mui/material";
+import SignInModal from "../modals/SignInModal";
 
 export default function SignInButton() {
-  return <SignIn>Sign In</SignIn>
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  return <>
+    <SignIn onClick={handleOpen}>Sign In</SignIn>
+    <SignInModal openCallback={open} closeCallback={handleClose} />
+  </>
 }
 const SignIn = styled(Button)(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,

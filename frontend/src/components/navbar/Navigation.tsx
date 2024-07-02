@@ -7,7 +7,7 @@ import AllRecipesMenu from './AllRecipesMenu';
 import UserAccountMenu from './UserAccountMenu';
 
 //temp solution
-const isLoggedIn = true;
+const isLoggedIn = false;
 
 export default function Navigation() {
   return (
