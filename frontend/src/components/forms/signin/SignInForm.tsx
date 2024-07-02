@@ -1,31 +1,45 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Checkbox, FormControlLabel, FormGroup, Link, TextField, Typography, styled } from "@mui/material";
+import { FormGroup, Link, Typography, styled } from "@mui/material";
 import SubmitFormButton from "../../buttons/SubmitForm";
+import { SignInFormData } from "../../../types/signInTypes";
+import InputField from "./InputField";
+import { SignInSchema } from "../../../types/userSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import CheckboxField from "./CheckboxField";
 
-type Inputs = {
-  email: string,
-  password: string,
-  termsAndPrivacyAccepted: boolean,
-};
 
 export default function SignInForm() {
-  const { register, handleSubmit } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = data => console.log(data);
+  const { register, handleSubmit, formState: { errors } } = useForm<SignInFormData>({
+    resolver: zodResolver(SignInSchema),
+  });
+  const onSubmit: SubmitHandler<SignInFormData> = data => console.log(data);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <StyledFormGroup>
-        <TextInput
+        <InputField
+          type="email"
           label="E-mail address"
           placeholder="Enter your e-mail"
-          {...register('email',)}
+          name="email"
+          register={register}
+          error={errors.email}
         />
-        <TextInput
+        <InputField
+          type="password"
           label="Password"
           placeholder="Create your password"
-          {...register('password')}
+          name="password"
+          register={register}
+          error={errors.password}
         />
-        <FormControlLabel control={<Checkbox />} label={CheckboxLabel} {...register('termsAndPrivacyAccepted')} />
+        <CheckboxField
+          register={register}
+          error={errors.termsAndPrivacyAccepted}
+          type={""}
+          label={""}
+          placeholder={""}
+          name={"termsAndPrivacyAccepted"} />
 
         <SubmitContainer>
           <SubmitFormButton text="Create an account" />
@@ -43,20 +57,6 @@ const StyledFormGroup = styled(FormGroup)({
   gap: '20px',
 })
 
-const TextInput = styled(TextField)({
-  width: '100%',
-
-  color: 'red',
-  '& .MuiOutlinedInput-root': {
-    '&:hover fieldset': {
-      borderColor: 'rgba(0, 0, 0, 0.23)',
-    },
-    '&.Mui-focused fieldset': {
-      borderColor: 'green',
-    },
-  }
-})
-
 const Text = styled(Typography)({
   fontSize: '14px',
 })
@@ -64,12 +64,6 @@ const Text = styled(Typography)({
 const BoldLink = styled(Link)({
   fontWeight: '500',
 })
-
-const CheckboxLabel = (
-  <Text>
-    Acceptance of <BoldLink href="terms-and-conditions">Terms & Conditions</BoldLink> and <BoldLink href="privacy-policy">Privacy Policy</BoldLink>
-  </Text>
-)
 
 const SubmitContainer = styled('div')({
   width: '40%',
