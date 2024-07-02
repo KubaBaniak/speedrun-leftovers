@@ -1,4 +1,6 @@
 import { Box, Divider, Link, styled } from "@mui/material"
+import React from 'react';
+
 
 const footerRoutes = [
   {
@@ -18,14 +20,14 @@ export default function FooterMenu() {
       <Divider orientation="vertical" flexItem />
       {
         footerRoutes.map((route, i) => (
-          <>
-            <FooterMenuItem href={route.path}>{route.label}
+          <React.Fragment key={route.path}>
+            <FooterMenuItem href={route.path}>
+              {route.label}
             </FooterMenuItem>
-            {i < footerRoutes.length - 1 && <Divider orientation="vertical" flexItem />}
-          </>
+            {i < footerRoutes.length - 1 && <Divider orientation="vertical" flexItem key={`${route.path}-divider`} />}
+          </React.Fragment>
         ))
       }
-
     </FooterMenuContainer>
   )
 }
@@ -47,3 +49,4 @@ const FooterMenuItem = styled(Link)(({ theme }) => ({
   fontFamily: theme.typography.fontFamily,
   color: theme.palette.text.primary,
 }))
+
