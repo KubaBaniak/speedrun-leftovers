@@ -1,13 +1,13 @@
 import { Stack } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import LogInButton from '../buttons/LogIn';
-import SignInButton from '../buttons/SignIn';
+import SignUpButton from '../buttons/SignUp';
 import AddRecipeButton from '../buttons/AddRecipe';
 import AllRecipesMenu from './AllRecipesMenu';
 import UserAccountMenu from './UserAccountMenu';
 
 //temp solution
-const isLoggedIn = true;
+const isLoggedIn = false;
 
 export default function Navigation() {
   return (
@@ -24,7 +24,7 @@ export default function Navigation() {
           <>
             <AllRecipesMenu />
             <LogInButton />
-            <SignInButton />
+            <SignUpButton />
           </>
       }
     </NavStack>

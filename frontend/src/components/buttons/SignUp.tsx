@@ -1,9 +1,18 @@
 import { Button, styled } from "@mui/material";
+import { Link } from 'react-router-dom';
+import SignUpModal from "../modals/SignUpModal";
 
-export default function SignInButton() {
-  return <SignIn>Sign In</SignIn>
+export default function SignUpButton() {
+  return <>
+    <Link to="?signup=true">
+      <SignUp>Sign Up</SignUp>
+    </Link>
+    <SignUpModal />
+  </>
 }
-const SignIn = styled(Button)(({ theme }) => ({
+
+
+const SignUp = styled(Button)(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
   color: theme.palette.primary.contrastText,
   textTransform: 'none',

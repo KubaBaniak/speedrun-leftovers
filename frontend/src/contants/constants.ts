@@ -1,1 +1,3 @@
 export const STALE_TIME_MIN = 5 * 60 * 1000;
+export const MIN_PASSWORD_LENGTH = 8;
+export const MAX_PASSWORD_LENGTH = 64;
