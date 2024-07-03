@@ -14,7 +14,6 @@ export type SignUpFormFieldProps = {
   name: ValidSignUpUpputNames;
   register: UseFormRegister<SignUpFormData>;
   error: FieldError | undefined;
-  valueAsNumber?: boolean;
   endAdornment?: ReactNode;
 };
 

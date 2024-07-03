@@ -9,7 +9,6 @@ export default function InputField({
   name,
   register,
   error,
-  valueAsNumber,
   endAdornment
 }: SignUpFormFieldProps) {
   return (
@@ -18,7 +17,7 @@ export default function InputField({
         type={type}
         label={label}
         placeholder={placeholder}
-        {...register(name, { valueAsNumber })}
+        {...register(name)}
         InputProps={{
           endAdornment: endAdornment
         }}
