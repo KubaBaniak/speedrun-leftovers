@@ -28,6 +28,6 @@ const BoldLink = styled(Link)({
 
 const CheckboxLabel = (
   <Text>
-    Acceptance of <BoldLink href="terms-and-conditions">Terms & Conditions</BoldLink> and <BoldLink href="privacy-policy">Privacy Policy</BoldLink>
+    Acceptance of <BoldLink href="terms-and-conditions" target="_blank">Terms & Conditions</BoldLink> and <BoldLink href="privacy-policy" target="_blank">Privacy Policy</BoldLink>
   </Text>
 )
