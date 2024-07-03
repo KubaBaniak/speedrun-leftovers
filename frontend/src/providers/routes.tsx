@@ -6,12 +6,6 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <HomePage />,
-    children: [
-      {
-        path: '/sign-in',
-        element: null
-      }
-    ]
   }
 ]);
 
