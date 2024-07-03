@@ -1,24 +1,24 @@
 import { ReactNode } from 'react';
 import { FieldError, UseFormRegister } from 'react-hook-form';
 
-export type SignInFormData = {
+export type SignUpFormData = {
   email: string;
   password: string;
   termsAndPrivacyAccepted: boolean;
 };
 
-export type SignInFormFieldProps = {
+export type SignUpFormFieldProps = {
   type: string;
   label: string;
   placeholder: string;
-  name: ValidSignInInputNames;
-  register: UseFormRegister<SignInFormData>;
+  name: ValidSignUpUpputNames;
+  register: UseFormRegister<SignUpFormData>;
   error: FieldError | undefined;
   valueAsNumber?: boolean;
   endAdornment?: ReactNode;
 };
 
-export type ValidSignInInputNames =
+export type ValidSignUpUpputNames =
   | 'email'
   | 'password'
   | 'termsAndPrivacyAccepted';

@@ -1,5 +1,5 @@
 import { TextField, styled } from "@mui/material";
-import { SignInFormFieldProps } from "../../../types/signInTypes";
+import { SignUpFormFieldProps } from "../../../types/signUpTypes";
 import ErrorMessage from "../ErrorMessage";
 
 export default function InputField({
@@ -11,7 +11,7 @@ export default function InputField({
   error,
   valueAsNumber,
   endAdornment
-}: SignInFormFieldProps) {
+}: SignUpFormFieldProps) {
   return (
     <>
       <TextInput

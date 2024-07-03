@@ -1,20 +1,20 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-import { FormGroup, Link, Typography, CircularProgress, styled, InputAdornment, IconButton } from "@mui/material";
+import { FormGroup, Link, Typography, CircularProgress, styled, IconButton, InputAdornment } from "@mui/material";
 import SubmitFormButton from "../../buttons/SubmitForm";
-import { SignInFormData } from "../../../types/signInTypes";
-import InputField from "./InputField";
-import { SignInSchema } from "../../../types/userSchema";
+import { SignUpFormData } from "../../../types/signUpTypes";
+import UpputField from "./InputField";
+import { SignUpSchema } from "../../../types/userSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import CheckboxField from "./CheckboxField";
 import { useState } from "react";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 
-interface ISignInFormProps {
+interface ISignUpFormProps {
   closeModalCallback: () => void,
 }
 
-export default function SignInForm({ closeModalCallback }: ISignInFormProps) {
+export default function SignUpForm({ closeModalCallback }: ISignUpFormProps) {
 
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisiblity = () => {
@@ -25,12 +25,12 @@ export default function SignInForm({ closeModalCallback }: ISignInFormProps) {
     register,
     handleSubmit,
     formState: { errors, isValid, isSubmitting }
-  } = useForm<SignInFormData>({
+  } = useForm<SignUpFormData>({
     mode: "onChange",
-    resolver: zodResolver(SignInSchema),
+    resolver: zodResolver(SignUpSchema),
   });
 
-  const onSubmit: SubmitHandler<SignInFormData> = async data => {
+  const onSubmit: SubmitHandler<SignUpFormData> = async data => {
     const tempRequest = new Promise<void>(resolve => {
       setTimeout(() => {
         console.log(data);
@@ -47,7 +47,7 @@ export default function SignInForm({ closeModalCallback }: ISignInFormProps) {
       {isSubmitting ?
         <StyledCircularProgress /> :
         <StyledFormGroup>
-          <InputField
+          <UpputField
             type="email"
             label="E-mail address"
             placeholder="Enter your e-mail"
@@ -55,7 +55,7 @@ export default function SignInForm({ closeModalCallback }: ISignInFormProps) {
             register={register}
             error={errors.email}
           />
-          <InputField
+          <UpputField
             type={passwordShown ? "text" : "password"}
             label="Password"
             placeholder="Create your password"

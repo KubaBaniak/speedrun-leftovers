@@ -3,24 +3,25 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { styled } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
-import SignInForm from '../forms/signin/SignInForm';
+import SignUpForm from '../forms/signUp/SignUpForm';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
-interface ISignInModalProps {
-  openCallback: boolean,
-  closeCallback: () => void,
-}
+export default function SignUpModal() {
+  const [searchParams] = useSearchParams();
+  const signUp = searchParams.get('signup');
 
-export default function SignInModal({ openCallback, closeCallback }: ISignInModalProps) {
+  const navigate = useNavigate();
+
   return (
     <Modal
-      open={openCallback}
-      onClose={closeCallback}
+      open={signUp === 'true'}
+      onClose={() => navigate(-1)}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
       <ModalBox>
         <ExitSection>
-          <ExitIcon onClick={closeCallback} />
+          <ExitIcon onClick={() => navigate(-1)} />
         </ExitSection>
         <ModalTitle id="modal-modal-title" variant="h6">
           Sign up
@@ -28,7 +29,7 @@ export default function SignInModal({ openCallback, closeCallback }: ISignInModa
         <ModalDescription>
           Create an account for free
         </ModalDescription>
-        <SignInForm closeModalCallback={closeCallback} />
+        <SignUpForm closeModalCallback={() => navigate(-1)} />
       </ModalBox>
     </Modal>
   );

@@ -1,7 +1,7 @@
 import { z, ZodSchema } from 'zod';
-import { SignInFormData } from './signInTypes';
+import { SignUpFormData } from './signUpTypes';
 
-export const SignInSchema: ZodSchema<SignInFormData> = z.object({
+export const SignUpSchema: ZodSchema<SignUpFormData> = z.object({
   email: z.string().email(),
   password: z.string().min(8).max(64),
   termsAndPrivacyAccepted: z.boolean().refine((val) => val === true, {

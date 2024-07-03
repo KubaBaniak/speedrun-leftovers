@@ -1,11 +1,11 @@
 import { Checkbox, FormControlLabel, Link, Typography, styled } from "@mui/material";
-import { SignInFormFieldProps } from "../../../types/signInTypes";
+import { SignUpFormFieldProps } from "../../../types/signUpTypes";
 import ErrorMessage from "../ErrorMessage";
 
 export default function CheckboxField({
   register,
   error,
-}: SignInFormFieldProps) {
+}: SignUpFormFieldProps) {
 
   return (
     <>
