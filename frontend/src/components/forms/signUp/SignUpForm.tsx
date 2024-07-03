@@ -2,7 +2,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { FormGroup, Link, Typography, CircularProgress, styled, IconButton, InputAdornment } from "@mui/material";
 import SubmitFormButton from "../../buttons/SubmitForm";
 import { SignUpFormData } from "../../../types/signUpTypes";
-import UpputField from "./InputField";
+import InputField from "./InputField";
 import { SignUpSchema } from "../../../types/userSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import CheckboxField from "./CheckboxField";
@@ -47,7 +47,7 @@ export default function SignUpForm({ closeModalCallback }: ISignUpFormProps) {
       {isSubmitting ?
         <StyledCircularProgress /> :
         <StyledFormGroup>
-          <UpputField
+          <InputField
             type="email"
             label="E-mail address"
             placeholder="Enter your e-mail"
@@ -55,7 +55,7 @@ export default function SignUpForm({ closeModalCallback }: ISignUpFormProps) {
             register={register}
             error={errors.email}
           />
-          <UpputField
+          <InputField
             type={passwordShown ? "text" : "password"}
             label="Password"
             placeholder="Create your password"

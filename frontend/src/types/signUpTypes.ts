@@ -11,13 +11,13 @@ export type SignUpFormFieldProps = {
   type: string;
   label: string;
   placeholder: string;
-  name: ValidSignUpUpputNames;
+  name: ValidSignUpInputNames;
   register: UseFormRegister<SignUpFormData>;
   error: FieldError | undefined;
   endAdornment?: ReactNode;
 };
 
-export type ValidSignUpUpputNames =
+export type ValidSignUpInputNames =
   | 'email'
   | 'password'
   | 'termsAndPrivacyAccepted';
