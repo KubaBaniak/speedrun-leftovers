@@ -24,7 +24,7 @@ export default function FooterMenu() {
             <FooterMenuItem href={route.path}>
               {route.label}
             </FooterMenuItem>
-            {i < footerRoutes.length - 1 && <Divider orientation="vertical" flexItem key={`${route.path}-divider`} />}
+            {i < footerRoutes.length - 1 && <Divider orientation="vertical" flexItem />}
           </React.Fragment>
         ))
       }
