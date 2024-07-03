@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { FieldError, UseFormRegister } from 'react-hook-form';
 
 export type SignInFormData = {
@@ -14,6 +15,7 @@ export type SignInFormFieldProps = {
   register: UseFormRegister<SignInFormData>;
   error: FieldError | undefined;
   valueAsNumber?: boolean;
+  endAdornment?: ReactNode;
 };
 
 export type ValidSignInInputNames =

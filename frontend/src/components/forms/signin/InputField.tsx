@@ -10,6 +10,7 @@ export default function InputField({
   register,
   error,
   valueAsNumber,
+  endAdornment
 }: SignInFormFieldProps) {
   return (
     <>
@@ -18,6 +19,9 @@ export default function InputField({
         label={label}
         placeholder={placeholder}
         {...register(name, { valueAsNumber })}
+        InputProps={{
+          endAdornment: endAdornment
+        }}
       />
       {error && <ErrorMessage message={error.message} />}
     </>

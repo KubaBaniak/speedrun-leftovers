@@ -28,7 +28,7 @@ export default function SignInModal({ openCallback, closeCallback }: ISignInModa
         <ModalDescription>
           Create an account for free
         </ModalDescription>
-        <SignInForm />
+        <SignInForm closeModalCallback={closeCallback} />
       </ModalBox>
     </Modal>
   );
