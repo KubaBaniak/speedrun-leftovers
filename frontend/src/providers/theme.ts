@@ -25,6 +25,9 @@ const theme = createTheme({
       secondary: '#00000099',
       disabled: '#00000061;',
     },
+    action: {
+      disabled: '#0000001F',
+    },
   },
   typography: {
     fontFamily: ['Poppins', 'Open-sans'].join(','),

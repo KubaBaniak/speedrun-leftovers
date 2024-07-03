@@ -1,7 +1,7 @@
 import { Button, styled } from "@mui/material";
 
-export default function SubmitFormButton({ text }: { text: string }) {
-  return <Submit type='submit'>{text}</Submit>
+export default function SubmitFormButton({ text, isDisabled }: { text: string, isDisabled: boolean }) {
+  return <Submit type='submit' disabled={isDisabled}>{text}</Submit>
 }
 
 const Submit = styled(Button)(({ theme }) => ({
@@ -15,4 +15,8 @@ const Submit = styled(Button)(({ theme }) => ({
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.primary.contrastText,
   },
+  '&:disabled': {
+    backgroundColor: theme.palette.action.disabled,
+    color: theme.palette.text.disabled,
+  }
 }));

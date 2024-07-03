@@ -9,7 +9,12 @@ import CheckboxField from "./CheckboxField";
 
 
 export default function SignInForm() {
-  const { register, handleSubmit, formState: { errors } } = useForm<SignInFormData>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid }
+  } = useForm<SignInFormData>({
+    mode: "onChange",
     resolver: zodResolver(SignInSchema),
   });
   const onSubmit: SubmitHandler<SignInFormData> = data => console.log(data);
@@ -42,7 +47,7 @@ export default function SignInForm() {
           name={"termsAndPrivacyAccepted"} />
 
         <SubmitContainer>
-          <SubmitFormButton text="Create an account" />
+          <SubmitFormButton text="Create an account" isDisabled={!isValid} />
         </SubmitContainer>
       </StyledFormGroup>
       <Text>
