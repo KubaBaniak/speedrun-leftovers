@@ -1,7 +1,4 @@
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
-import { styled } from '@mui/material';
+import { styled, Box, Modal, Typography } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
 import SignUpForm from '../forms/signUp/SignUpForm';
 import { useNavigate, useSearchParams } from 'react-router-dom';

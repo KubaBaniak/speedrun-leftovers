@@ -8,6 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import CheckboxField from "./CheckboxField";
 import { useState } from "react";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 
 
 interface ISignUpFormProps {
@@ -20,6 +21,8 @@ export default function SignUpForm({ closeModalCallback }: ISignUpFormProps) {
   const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
   };
+
+  const navigate = useNavigate()
 
   const {
     register,
@@ -40,6 +43,7 @@ export default function SignUpForm({ closeModalCallback }: ISignUpFormProps) {
 
     await tempRequest;
     closeModalCallback();
+    navigate('/')
   };
 
   return (

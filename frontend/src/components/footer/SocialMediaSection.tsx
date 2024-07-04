@@ -1,7 +1,6 @@
+import { Link, styled, Box } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import Box from '@mui/material/Box';
-import { Link, styled } from '@mui/material';
 
 export default function SocialMediaSection() {
   return (

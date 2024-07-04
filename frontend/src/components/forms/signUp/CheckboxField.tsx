@@ -4,13 +4,16 @@ import ErrorMessage from "../ErrorMessage";
 
 export default function CheckboxField({
   register,
+  name,
   error,
 }: SignUpFormFieldProps) {
 
   return (
     <>
       <FormControlLabel
-        control={<Checkbox />}
+        control={<Checkbox
+          inputProps={{ 'data-testid': `input-${name}` } as React.InputHTMLAttributes<HTMLInputElement>}
+        />}
         label={CheckboxLabel}
         {...register('termsAndPrivacyAccepted')} />
       {error && <ErrorMessage message={error.message} />}

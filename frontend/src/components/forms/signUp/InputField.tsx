@@ -18,6 +18,9 @@ export default function InputField({
         label={label}
         placeholder={placeholder}
         {...register(name)}
+        inputProps={{
+          "data-testid": `input-${name}`,
+        }}
         InputProps={{
           endAdornment: endAdornment
         }}
