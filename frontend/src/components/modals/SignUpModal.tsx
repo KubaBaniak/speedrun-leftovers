@@ -1,37 +1,58 @@
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
-import { styled } from '@mui/material';
+import { useState } from 'react';
+import { styled, Modal, Typography, Box } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
 import SignUpForm from '../forms/signUp/SignUpForm';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import SignUpSnackbar from '../snackbars/signUpSnackbar';
 
 export default function SignUpModal() {
   const [searchParams] = useSearchParams();
+  const [snackbarValues, setSnackbarValues] =
+    useState<{ open: boolean, errorMessage: string | null }>({ open: false, errorMessage: null });
+
   const signUp = searchParams.get('signup');
 
   const navigate = useNavigate();
 
+
+  const handleClick = (error: string | null) => {
+    setSnackbarValues({ open: true, errorMessage: error });
+  };
+
+  const handleClose = () => {
+    setSnackbarValues({ open: false, errorMessage: null });
+  };
+
   return (
-    <Modal
-      open={signUp === 'true'}
-      onClose={() => navigate(-1)}
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
-    >
-      <ModalBox>
-        <ExitSection>
-          <ExitIcon onClick={() => navigate(-1)} />
-        </ExitSection>
-        <ModalTitle id="modal-modal-title" variant="h6">
-          Sign up
-        </ModalTitle>
-        <ModalDescription>
-          Create an account for free
-        </ModalDescription>
-        <SignUpForm closeModalCallback={() => navigate(-1)} />
-      </ModalBox>
-    </Modal>
+    <>
+      <Modal
+        open={signUp === 'true'}
+        onClose={() => navigate(-1)}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <ModalBox>
+          <ExitSection>
+            <ExitIcon onClick={() => navigate(-1)} />
+          </ExitSection>
+          <ModalTitle id="modal-modal-title" variant="h6">
+            Sign up
+          </ModalTitle>
+          <ModalDescription>
+            Create an account for free
+          </ModalDescription>
+          <SignUpForm
+            closeModalCallback={() => navigate(-1)}
+            openSnackbarCallback={handleClick}
+          />
+        </ModalBox>
+      </Modal>
+      <SignUpSnackbar
+        open={snackbarValues.open}
+        handleClose={handleClose}
+        errorMessage={snackbarValues.errorMessage}
+      />
+    </>
   );
 }
 
