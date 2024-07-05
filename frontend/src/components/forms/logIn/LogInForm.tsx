@@ -73,7 +73,7 @@ export default function LogInForm({ closeModalCallback }: ILogInFormProps) {
               </InputAdornment>
             }
           />
-          <Link href="/forgot-password"><Text align="right">Forgot password?</Text></Link>
+          <Link href="?forgotPassword=true"><Text align="right">Forgot password?</Text></Link>
           <CheckboxField
             register={register}
             error={errors.rememberMe}

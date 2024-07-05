@@ -1,20 +1,20 @@
 import { styled, Modal, Typography, Box } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import LogInForm from '../forms/logIn/LogInForm';
+import ForgotPasswordForm from '../forms/forgotPassword/ForgotPasswordForm';
 
-export default function LogInModal() {
+export default function ForgotPasswordModal() {
   const [searchParams] = useSearchParams();
 
-  const logInQueryValue = searchParams.get('login');
+  const forgotPasswordQueryValue = searchParams.get('forgotPassword');
 
   const navigate = useNavigate();
 
   return (
     <>
       <Modal
-        open={logInQueryValue === 'true'}
-        onClose={() => navigate(-1)}
+        open={forgotPasswordQueryValue === 'true'}
+        onClose={() => navigate('/')}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -23,13 +23,16 @@ export default function LogInModal() {
             <ExitIcon onClick={() => navigate(-1)} />
           </ExitSection>
           <ModalTitle id="modal-modal-title" variant="h6">
-            Log In
+            Forgot password
           </ModalTitle>
-          <LogInForm
+          <ModalDescription>
+            No worries! Enter your email address below, and we'll send you a link to reset your password.
+          </ModalDescription>
+          <ForgotPasswordForm
             closeModalCallback={() => navigate(-1)}
           />
         </ModalBox>
-      </Modal>
+      </Modal >
     </>
   );
 }
@@ -51,13 +54,20 @@ const ModalTitle = styled(Typography)(({ theme }) => ({
   fontSize: 34,
   color: theme.palette.text.primary,
   letterSpacing: 0.25,
-  paddingBottom: 24,
+  paddingBottom: 8,
+}))
+
+const ModalDescription = styled(Typography)(({ theme }) => ({
+  fontSize: 14,
+  color: theme.palette.text.primary,
+  paddingBottom: 32,
 }))
 
 const ExitSection = styled('div')({
   width: '100%',
   display: 'flex',
   justifyContent: 'flex-end',
+  paddingBotton: 0
 })
 
 const ExitIcon = styled(ClearIcon)({
