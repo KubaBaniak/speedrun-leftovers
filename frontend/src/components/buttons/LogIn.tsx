@@ -1,7 +1,13 @@
-import { Button, styled } from "@mui/material";
+import { Button, Link, styled } from "@mui/material";
+import LogInModal from "../modals/LogInModal";
 
 export default function LogInButton() {
-  return <LogIn>Log in</LogIn>
+  return <>
+    <Link href="?login=true">
+      <LogIn>Log in</LogIn>
+    </Link >
+    <LogInModal />
+  </>
 }
 
 const LogIn = styled(Button)(({ theme }) => ({
