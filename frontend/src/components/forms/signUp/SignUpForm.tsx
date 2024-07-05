@@ -12,9 +12,10 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 interface ISignUpFormProps {
   closeModalCallback: () => void,
+  openSnackbarCallback: (error: string | null) => void,
 }
 
-export default function SignUpForm({ closeModalCallback }: ISignUpFormProps) {
+export default function SignUpForm({ closeModalCallback, openSnackbarCallback }: ISignUpFormProps) {
 
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisiblity = () => {
@@ -40,6 +41,7 @@ export default function SignUpForm({ closeModalCallback }: ISignUpFormProps) {
 
     await tempRequest;
     closeModalCallback();
+    openSnackbarCallback(null);
   };
 
   return (
