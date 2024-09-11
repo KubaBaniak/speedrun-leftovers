@@ -1,5 +1,5 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-import { FormGroup, Link, Typography, CircularProgress, styled } from "@mui/material";
+import { FormGroup, CircularProgress, styled } from "@mui/material";
 import SubmitFormButton from "../../buttons/SubmitForm";
 import InputField from "./InputField";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -7,12 +7,14 @@ import { ForgotPasswordFormData } from "../../../types/forgotPasswordTypes";
 import { ForgotPasswordSchema } from "../../../types/userSchema";
 import CancelButton from "../../buttons/Cancel";
 
+const SUCCESS_MESSAGE = 'Thanks! An e-mail was sent that will ask you to click on a link to verify that you own this account';
 
 interface IForgotPasswordFormProps {
   closeModalCallback: () => void,
+  openSnackbarCallback: (error: string | null) => void,
 }
 
-export default function ForgotPasswordForm({ closeModalCallback }: IForgotPasswordFormProps) {
+export default function ForgotPasswordForm({ closeModalCallback, openSnackbarCallback }: IForgotPasswordFormProps) {
 
   const {
     register,
@@ -33,6 +35,7 @@ export default function ForgotPasswordForm({ closeModalCallback }: IForgotPasswo
 
     await tempRequest;
     closeModalCallback();
+    openSnackbarCallback(SUCCESS_MESSAGE);
   };
 
   return (
