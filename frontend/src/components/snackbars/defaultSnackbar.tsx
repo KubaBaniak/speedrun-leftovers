@@ -35,7 +35,7 @@ export default function DefaultSnackbar({ open, handleClose, message }: ISignUpS
 const StyledSnackbar = styled(Snackbar)(({ theme }) => ({
   "& .MuiSnackbarContent-root": {
     color: theme.palette.text.primary,
-    backgroundColor: 'red',
+    backgroundColor: 'white',
     boxShadow: '0 1px 18px 0 #0000001F, 0 6px 10px 0 #00000024, 0 3px 5px -1px #00000033'
   }
 }))
