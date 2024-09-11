@@ -6,14 +6,14 @@ import LogInForm from '../forms/logIn/LogInForm';
 export default function LogInModal() {
   const [searchParams] = useSearchParams();
 
-  const signUp = searchParams.get('login');
+  const logInQueryValue = searchParams.get('login');
 
   const navigate = useNavigate();
 
   return (
     <>
       <Modal
-        open={signUp === 'true'}
+        open={logInQueryValue === 'true'}
         onClose={() => navigate(-1)}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"

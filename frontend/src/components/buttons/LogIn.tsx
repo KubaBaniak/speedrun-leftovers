@@ -1,5 +1,6 @@
 import { Button, Link, styled } from "@mui/material";
 import LogInModal from "../modals/LogInModal";
+import ForgotPasswordModal from "../modals/ForgotPasswordModal";
 
 export default function LogInButton() {
   return <>
@@ -7,6 +8,7 @@ export default function LogInButton() {
       <LogIn>Log in</LogIn>
     </Link >
     <LogInModal />
+    <ForgotPasswordModal />
   </>
 }
 
