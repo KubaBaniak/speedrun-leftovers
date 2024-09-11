@@ -9,6 +9,7 @@ import CheckboxField from "./CheckboxField";
 import { useState } from "react";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
+const SUCCESS_SIGNUP_MESSAGE = "You've successfully registered on our website. To complete the registration process, please check your email"
 
 interface ISignUpFormProps {
   closeModalCallback: () => void,
@@ -41,7 +42,7 @@ export default function SignUpForm({ closeModalCallback, openSnackbarCallback }:
 
     await tempRequest;
     closeModalCallback();
-    openSnackbarCallback(null);
+    openSnackbarCallback(SUCCESS_SIGNUP_MESSAGE);
   };
 
   return (

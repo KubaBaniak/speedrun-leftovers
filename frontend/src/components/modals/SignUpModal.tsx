@@ -3,24 +3,24 @@ import { styled, Modal, Typography, Box } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
 import SignUpForm from '../forms/signUp/SignUpForm';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import SignUpSnackbar from '../snackbars/signUpSnackbar';
+import DefaultSnackbar from '../snackbars/defaultSnackbar';
 
 export default function SignUpModal() {
   const [searchParams] = useSearchParams();
   const [snackbarValues, setSnackbarValues] =
-    useState<{ open: boolean, errorMessage: string | null }>({ open: false, errorMessage: null });
+    useState<{ open: boolean, signUpMessage: string | null }>({ open: false, signUpMessage: null });
 
   const signUp = searchParams.get('signup');
 
   const navigate = useNavigate();
 
 
-  const handleClick = (error: string | null) => {
-    setSnackbarValues({ open: true, errorMessage: error });
+  const handleClick = (message: string | null) => {
+    setSnackbarValues({ open: true, signUpMessage: message });
   };
 
   const handleClose = () => {
-    setSnackbarValues({ open: false, errorMessage: null });
+    setSnackbarValues({ open: false, signUpMessage: null });
   };
 
   return (
@@ -47,10 +47,10 @@ export default function SignUpModal() {
           />
         </ModalBox>
       </Modal>
-      <SignUpSnackbar
+      <DefaultSnackbar
         open={snackbarValues.open}
         handleClose={handleClose}
-        errorMessage={snackbarValues.errorMessage}
+        message={snackbarValues.signUpMessage}
       />
     </>
   );
