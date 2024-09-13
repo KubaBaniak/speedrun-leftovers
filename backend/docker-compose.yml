@@ -1,0 +1,40 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    networks:
+      - leftovers-database-network
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: ${ENVIRONMENT}
+    restart: unless-stopped
+    networks:
+      - leftovers-database-network
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: npx nest start --watch
+
+volumes:
+  db_data:
+    driver: local
+
+networks:
+  leftovers-database-network:
+    driver: bridge
+
