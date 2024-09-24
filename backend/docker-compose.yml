@@ -13,6 +13,20 @@ services:
     ports:
       - '${POSTGRES_PORT}:${POSTGRES_PORT}'
 
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4_container
+    restart: always
+    ports:
+      - "8888:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMIAL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
+    networks:
+      - leftovers-database-network
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+
   app:
     build:
       context: .
@@ -28,9 +42,15 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
-    command: npx nest start --watch
+    command: >
+      sh -c "
+      npm run migrations
+      && npx nest start --watch
+      "
 
 volumes:
+  local_pgdata:
+  pgadmin-data:
   db_data:
     driver: local
 
