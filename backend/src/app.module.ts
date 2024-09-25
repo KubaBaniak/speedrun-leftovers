@@ -4,11 +4,12 @@ import { AppService } from './app.service';
 import { DatabaseModule } from './database/database.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
     DatabaseModule.forRootAsync({
-      imports: [ConfigModule],
+      imports: [ConfigModule.forRoot()],
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
         host: configService.get('POSTGRES_HOST'),
@@ -19,6 +20,7 @@ import { UsersModule } from './users/users.module';
       }),
     }),
     UsersModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
