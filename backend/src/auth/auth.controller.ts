@@ -26,10 +26,7 @@ export class AuthController {
   @HttpCode(200)
   @UseGuards(LocalAuthGuard)
   @Post('signin')
-  signIn(
-    @Body() _signInDto: SignInDto,
-    @CurrentUser() user: User,
-  ): Promise<JwtToken> {
+  signIn(@CurrentUser() user: User): Promise<JwtToken> {
     return this.authService.signIn(user);
   }
 
