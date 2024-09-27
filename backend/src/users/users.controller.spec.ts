@@ -38,13 +38,13 @@ describe('UsersController', () => {
 
   describe('createUser', () => {
     it('should create a new user with correct email and hashed password', async () => {
-      jest.spyOn(usersService, 'create').mockResolvedValue({
+      jest.spyOn(usersService, 'createUser').mockResolvedValue({
         id: faker.number.int(),
         email: mockUserCredentials.email,
       });
 
       const createUserResult =
-        await usersController.create(mockUserCredentials);
+        await usersController.createUser(mockUserCredentials);
 
       expect(createUserResult.email).toBe(mockUserCredentials.email);
       expect(createUserResult.id).toBeDefined();

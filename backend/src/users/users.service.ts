@@ -1,36 +1,32 @@
-import { ForbiddenException, Injectable } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
+import { Injectable } from '@nestjs/common';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UsersRepository } from './users.repository';
-import { User } from './users.model';
-import { AuthService } from '../auth/auth.service';
+import { CreateUserDto } from './dto/create-user.dto';
+import { AuthUser } from './models/auth-users.model';
+import { User } from './dto';
 
 @Injectable()
 export class UsersService {
-  constructor(
-    private readonly authService: AuthService,
-    private readonly usersRepository: UsersRepository,
-  ) {}
+  constructor(private readonly usersRepository: UsersRepository) {}
 
   async isEmailTaken(email: string): Promise<boolean> {
     const user = await this.usersRepository.findByEmail(email);
     return !!user;
   }
 
-  async create(createUserDto: CreateUserDto): Promise<User> {
-    const { email, password } = createUserDto;
-    if (await this.isEmailTaken(email)) {
-      throw new ForbiddenException();
-    }
-
-    const hashedPassword = await this.authService.hashPassword(password);
+  async createUser(createUserDto: CreateUserDto): Promise<User> {
+    const { email, hashedPassword } = createUserDto;
 
     const createdUser = this.usersRepository.create({
       email,
-      password: hashedPassword,
+      hashedPassword,
     });
 
     return createdUser;
+  }
+
+  async findByEmailForAuth(email: string): Promise<AuthUser> {
+    return this.usersRepository.findByEmailForAuth(email);
   }
 
   findAll() {
