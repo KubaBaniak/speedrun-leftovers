@@ -1,19 +1,20 @@
 import { Injectable } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
 import { Database } from '../database/database';
-import { User } from './users.model';
+import { CreateUserDto } from './dto/create-user.dto';
+import { AuthUser } from './models/auth-users.model';
+import { User } from './dto';
 
 @Injectable()
 export class UsersRepository {
   constructor(private readonly database: Database) {}
 
-  async create(createUserDtoWithHashedPassword: CreateUserDto): Promise<User> {
-    const { email, password } = createUserDtoWithHashedPassword;
+  async create(createUserDto: CreateUserDto): Promise<User> {
+    const { email, hashedPassword } = createUserDto;
     const databaseResponse = await this.database
       .insertInto('users')
       .values({
         email,
-        password,
+        password: hashedPassword,
       })
       .returningAll()
       .executeTakeFirst();
@@ -30,6 +31,18 @@ export class UsersRepository {
 
     if (databaseResponse) {
       return new User(databaseResponse);
+    }
+  }
+
+  async findByEmailForAuth(email: string): Promise<AuthUser> {
+    const databaseResponse = await this.database
+      .selectFrom('users')
+      .where('email', '=', email)
+      .selectAll()
+      .executeTakeFirst();
+
+    if (databaseResponse) {
+      return new AuthUser(databaseResponse);
     }
   }
 }

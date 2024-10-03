@@ -17,7 +17,7 @@ describe('UsersService', () => {
   beforeEach(async () => {
     mockUserCredentials = {
       email: faker.internet.email(),
-      password: faker.internet.password(),
+      hashedPassword: faker.internet.password(),
     };
     findByEmailRepositoryMock = jest.fn();
     createUserRepositoryMock = jest.fn();
@@ -79,13 +79,13 @@ describe('UsersService', () => {
         email: userCredentials.email,
       });
 
-      const createUserResult = await usersService.create(userCredentials);
+      const createUserResult = await usersService.createUser(userCredentials);
 
       expect(createUserResult.email).toBe(userCredentials.email);
       expect(createUserResult.id).toBeDefined();
       expect(typeof createUserResult.id).toBe('number');
       expect(authServiceMock.hashPassword).toHaveBeenCalledWith(
-        userCredentials.password,
+        userCredentials.hashedPassword,
       );
     });
 
@@ -93,7 +93,7 @@ describe('UsersService', () => {
       findByEmailRepositoryMock.mockResolvedValue(true);
       const userCredentials = mockUserCredentials;
 
-      await expect(usersService.create(userCredentials)).rejects.toThrow(
+      await expect(usersService.createUser(userCredentials)).rejects.toThrow(
         ForbiddenException,
       );
       expect(findByEmailRepositoryMock).toHaveBeenCalledWith(
